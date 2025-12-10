@@ -1,0 +1,144 @@
+// ==============================================
+// Automobile Inventory Program - Pseudocode
+//
+// DESCRIPTION:
+// This program simulates an automobile inventory system using Java.
+// It consists of three classes:
+// 1. Automobile.java – a class that defines an automobile’s attributes.
+// 2. Inventory.java – a class that manages a list of automobiles.
+// 3. InventoryApp.java – the main program that handles user interaction.
+//
+// The purpose of this pseudocode is to outline the logical flow and structure
+// of the program, demonstrating how the components interact and process data.
+// --------------------------------------------------
+
+//
+// ========================
+// Automobile.java Pseudocode
+// ========================
+
+CLASS Automobile
+    DECLARE String vin
+    DECLARE String make
+    DECLARE String model
+    DECLARE int year
+    DECLARE double price
+
+    CONSTRUCTOR(vin, make, model, year, price)
+        SET class fields using parameters
+
+    METHOD getVin()
+        RETURN vin
+
+    METHOD getMake()
+        RETURN make
+
+    METHOD getModel()
+        RETURN model
+
+    METHOD getYear()
+        RETURN year
+
+    METHOD getPrice()
+        RETURN price
+
+    METHOD toString()
+        RETURN formatted string with automobile details
+
+// --------------------------------------------------
+// This class serves as the data model. Each Automobile object represents
+// a single vehicle in the inventory with identifying details.
+
+
+//
+// ========================
+// Inventory.java Pseudocode
+// ========================
+
+IMPORT ArrayList
+
+CLASS Inventory
+    DECLARE ArrayList<Automobile> autos
+
+    CONSTRUCTOR()
+        INITIALIZE autos as empty ArrayList
+
+    METHOD addAutomobile(Automobile auto)
+        ADD auto to autos list
+
+    METHOD removeAutomobileByVin(String vin)
+        LOOP through autos
+            IF auto.vin equals vin
+                REMOVE that auto
+                RETURN true
+        RETURN false
+
+    METHOD displayInventory()
+        IF autos list is empty
+            DISPLAY "Inventory is empty."
+        ELSE
+            LOOP through autos
+                PRINT each auto
+
+    METHOD getInventorySize()
+        RETURN size of autos list
+
+// --------------------------------------------------
+// This class manages the collection of Automobile objects.
+// It provides methods to add, remove, and display vehicles.
+
+
+//
+// ============================
+// InventoryApp.java Pseudocode
+// ============================
+
+IMPORT Scanner
+IMPORT FileWriter
+IMPORT IOException
+
+CLASS InventoryApp
+    METHOD main()
+        CREATE Scanner for input
+        CREATE Inventory object
+        DECLARE boolean keepRunning = true
+
+        WHILE keepRunning
+            DISPLAY menu options
+            GET user input
+
+            SWITCH user input
+                CASE 1:
+                    PROMPT for automobile info
+                    CREATE new Automobile
+                    CALL inventory.addAutomobile(auto)
+                    BREAK
+
+                CASE 2:
+                    PROMPT for VIN
+                    CALL inventory.removeAutomobileByVin(vin)
+                    DISPLAY result
+                    BREAK
+
+                CASE 3:
+                    CALL inventory.displayInventory()
+                    BREAK
+
+                CASE 4:
+                    CALL write inventory to text file using FileWriter
+                    DISPLAY confirmation message
+                    BREAK
+
+                CASE 5:
+                    SET keepRunning = false
+                    DISPLAY exit message
+                    BREAK
+
+                DEFAULT:
+                    DISPLAY "Invalid option."
+
+// --------------------------------------------------
+// This is the user interface portion of the program.
+// It provides a menu-driven loop to add, remove, view, and export inventory data.
+//
+// End of Pseudocode
